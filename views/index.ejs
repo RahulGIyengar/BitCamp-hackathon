@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>farmer's assistant</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #24af42;
+  padding: 20px;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: rgb(39, 199, 111);
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #00FF00;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+h2{ color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px red;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #228B22;
+  border: none;
+  color: #000000 ;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;  position: absolute;
+  top: 70%;
+  left: 90%;
+  transform: translate(-370%, 50%);
+  -ms-transform: translate(-50%, -50%);
+  
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.dropbtn {
+  background-color: #228b22;
+  color: white;
+  padding: 16px;
+  font-size: 29px;
+  border: none;
+  cursor: pointer;
+ 
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+   position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-2%, 50%);
+  -ms-transform: translate(-50%, -50%);
+  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #008000;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;}
+
+    html { 
+  background: url(https://upload.wikimedia.org/wikipedia/commons/7/74/Flickr_-_Nicholas_T_-_Cash_Crop.jpg) no-repeat center fixed; 
+  background-size: cover;
+}
+
+body { 
+  color: white; 
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #15dd62;
+  padding: 20px;
+}
+</style>
+
+
+
+
+
+</head>
+<body onload="getLocation();">
+<div>
+   <form action="/" method="post">
+  
+    <label for="crops">choose your crop here:</label>
+    <select id="crop chosen:" name="crop">
+      <option name="rice" value="rice">rice</option>
+      <option name="wheat" value="wheat">wheat</option>
+      <option name="jowar" value="jowar">jowar</option>
+    </select>
+
+    <input type="submit" value="Submit">
+  <input type="hidden" name= "latitude" id="latitude"><br>
+  <input type="hidden" name="longitude" id="longitude">
+
+  </form>
+</div>
+
+<header>
+  <h2>FARMER'S ASSISTANT</h2>
+</header>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+
+function showPosition(position) {
+ 
+var lat = position.coords.latitude;
+var lon = position.coords.longitude;
+
+document.getElementById("latitude").value=lat;
+document.getElementById("longitude").value=lon;
+
+}
+
+</script>
+
+<% if(weather !== null){ %>
+
+          <p><%= weather %></p>
+
+        <% } %>
+
+
+
+        <% if(error !== null){ %>
+
+          <p><%= error %></p>
+
+        <% } %>
+
+</body>
+</html>
